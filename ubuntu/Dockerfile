@@ -8,4 +8,5 @@ RUN apt update && DEBIAN_FRONTEND=noninteractive apt install curl git make clang
     apt install swi-prolog -y
 RUN curl -sL "https://github.com/terminusdb/terminusdb/archive/refs/tags/v${VERSION}.tar.gz" > /tmp/terminusdb.tar.gz \
     && tar -xvf /tmp/terminusdb.tar.gz && cd "terminusdb-${VERSION}" \
+    && export PATH=/root/.cargo/bin:$PATH \
     && make && mv ./terminusdb ../
