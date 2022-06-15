@@ -1,0 +1,24 @@
+name: Ubuntu distribution
+
+on:
+  push:
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    name: Build Ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          cd ubuntu
+          sudo docker build -t terminusdb:local -f Dockerfile .
+          sudo docker run -d -n terminusdb -t terminusdb:local
+          sudo docker cp terminusdb:/app/terminusdb/terminusdb .
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: terminusdb-ubuntu-22.04
+          path: terminusdb
