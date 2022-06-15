@@ -15,7 +15,7 @@ jobs:
       - run: |
           cd ubuntu
           sudo docker build -t terminusdb:local -f Dockerfile .
-          sudo docker run -d --name terminusdb -t terminusdb:local
+          sudo docker run -d --name terminusdb -t terminusdb:local /bin/bash
           sudo docker cp terminusdb:/app/terminusdb/terminusdb .
 
       - uses: actions/upload-artifact@v3
