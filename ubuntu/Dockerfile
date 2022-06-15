@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:20.04
 WORKDIR /app/terminusdb
 ARG VERSION=10.1.0
 RUN apt update && apt install curl git make clang software-properties-common -y && \
