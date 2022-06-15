@@ -11,5 +11,5 @@ RUN curl -sL "https://github.com/terminusdb/terminusdb/archive/refs/tags/v${VERS
     && tar -xvf /tmp/terminusdb.tar.gz && cd "terminusdb-${VERSION}" \
     && export PATH=/root/.cargo/bin:$PATH \
     && git clone https://github.com/terminusdb/tus.git --branch "v${TUS_VERSION}" --single-branch /app/terminusdb/tus \
-    && swipl -g "pack_install('file://app/terminusdb/tus', [interactive(false)])" \
+    && swipl -g "pack_install('file:///app/terminusdb/tus', [interactive(false)])" \
     && make && mv ./terminusdb ../
