@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 WORKDIR /app/terminusdb
 ARG VERSION=10.1.0
-RUN apt update && apt install curl git make clang && \
+RUN apt update && apt install curl git make clang -y && \
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal && \
     add-apt-repository ppa:swi-prolog/stable -y && \
     apt update && \
