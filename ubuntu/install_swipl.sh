@@ -5,4 +5,4 @@ then
     add-apt-repository ppa:swi-prolog/stable -y
 fi
 apt update
-apt install swi-prolog
+apt install swi-prolog -y
