@@ -20,5 +20,5 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: terminusdb-ubuntu-22.04
+          name: terminusdb-ubuntu-20.04
           path: ./ubuntu/terminusdb
