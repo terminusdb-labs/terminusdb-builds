@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: |
           cd ubuntu
-          sed -i 's/20.04/${{ matrix.version }}//' Dockerfile
+          sed -i 's/20.04/${{ matrix.version }}/' Dockerfile
           sudo docker build -t terminusdb:local -f Dockerfile .
           sudo docker run -d --name terminusdb -t terminusdb:local /bin/bash
           sudo docker cp terminusdb:/app/terminusdb/terminusdb .
