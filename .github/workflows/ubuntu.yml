@@ -9,16 +9,20 @@ jobs:
   build:
     name: Build Ubuntu
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        versions: [18.04, 20.04]
 
     steps:
       - uses: actions/checkout@v2
       - run: |
           cd ubuntu
+          sed -i 's/20.04/${{ matrix.version }}//' Dockerfile
           sudo docker build -t terminusdb:local -f Dockerfile .
           sudo docker run -d --name terminusdb -t terminusdb:local /bin/bash
           sudo docker cp terminusdb:/app/terminusdb/terminusdb .
 
       - uses: actions/upload-artifact@v3
         with:
-          name: terminusdb-ubuntu-20.04
+          name: terminusdb-ubuntu-${{ matrix.version }}
           path: ./ubuntu/terminusdb
